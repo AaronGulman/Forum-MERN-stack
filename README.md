@@ -3,8 +3,12 @@
 ## Technologies
 - Express
 - ~MongoDB~ MySQL
+- Axios
 - React
 - React Router
+- Express-session
+- MySQLStore
+- JWT
 - Vite
 - Tailwind CSS
 
