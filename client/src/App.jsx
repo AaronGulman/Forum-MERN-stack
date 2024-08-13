@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
-import Auth from './Auth/Auth';
-import {BrowserRouter} from 'react-router-dom'
+import SignUp from './SignUp/SignUp';
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 function App() {
 
 
   return (
     <BrowserRouter>
-
+    <Routes>
+    <Route path="register" element={<SignUp/>}/> 
+    </Routes>
     </BrowserRouter>
 
   );

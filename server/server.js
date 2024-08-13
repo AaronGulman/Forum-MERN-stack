@@ -6,15 +6,12 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
-
-
 const server = express();
 const PORT = process.env.PORT || 3000
 const saltRounds = 10;
 
 server.use(cors());
 server.use(express.json())
-
 
 server.get('/test-db', async (req, res) => {
     try {
@@ -43,6 +40,7 @@ server.post('/test-db', async (req,res)=> {
 
         //Here's our password hashing:
         const password_hash = await bcrypt.hash(password,saltRounds);
+
 
         const [result] = connection.query(
             `INSERT INTO users (username,email,password_hash) VALUES (?,?,?)`,
