@@ -1,27 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import style from "./Auth.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Auth() {
-  const navigate = useNavigate();
+function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
 
   const REGISTRATION = (event) => {
     event.preventDefault();
 
     axios
-      .post("http://localhost:3000/register", { username, password })
-      .then((res) => console.log("Success"), navigate("/dashboard"))
+      .post("http://localhost:3000/test-db", { username, password ,email })
+      .then(
+	(res) =>{ 
+	console.log("Success");
+	navigate("/dashboard");
+	})
       .catch((error) => {
         setError("Username already exist! Please choose another username");
       });
   };
 
   return (
-    <form action={REGISTRATION} className={style.regForm}>
+    <form onSubmit={REGISTRATION} className={style.regForm}>
       <h1>Registration</h1>
       <input
         type="text"
@@ -29,17 +35,29 @@ function Auth() {
         id="login"
         placeholder="Username..."
         value={username}
+	onChange={(e) => setUsername(e.target.value)}
       />
+        <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email..."
+        value={email}
+	onChange={(e) => setEmail(e.target.value)}
+      />
+
       <input
         type="password"
         name="password"
         id="password"
         placeholder="Password..."
         value={password}
+	onChange={(e) => setPassword(e.target.value)}
       />
       <input type="submit" value="Register" />
+      {error && <p>{error}</p>}
     </form>
   );
 }
 
-export default Auth;
+export default SignUp;
