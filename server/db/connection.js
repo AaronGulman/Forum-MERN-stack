@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise'
+import mysql from 'mysql2'
 import dotenv from 'dotenv'
 
 dotenv.config();
@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err)=>{
 	if(err){
-		console.error(err);
+		console.error("Database error: "+err);
 	}else{
 		console.log("Connected to the DB")
 	}
