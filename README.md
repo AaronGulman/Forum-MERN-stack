@@ -20,3 +20,7 @@ After a lot of consideration I decided to proceed with MySQL since having a rela
 
 ## Rationale for MySQL
 Forums typically require structured data models with well-defined relationships, such as users, posts, and comments. MySQL's relational database model is well-suited for handling such structured data and maintaining data integrity through foreign keys and constraints.
+
+## 10/14/24 - Update
+
+Consider using Redis.
