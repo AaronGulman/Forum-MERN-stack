@@ -2,12 +2,12 @@
 
 ## Technologies
 - Express
-- ~MongoDB~ MySQL
+- ~MongoDB~ MySQL(Redis?)
 - Axios
 - React
 - React Router
 - Express-session
-- MySQLStore
+- MySQLStore(Redis?)
 - JWT
 - Vite
 - Tailwind CSS
