@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import style from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function SignUp() {
+const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -27,7 +26,7 @@ function SignUp() {
   };
 
   return (
-    <form onSubmit={REGISTRATION} className={style.regForm}>
+    <form onSubmit={REGISTRATION} className="bg-[#000] flex justify-center items-start h-6 w-6">
       <h1>Registration</h1>
       <input
         type="text"
