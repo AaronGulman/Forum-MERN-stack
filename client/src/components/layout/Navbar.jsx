@@ -1,30 +1,42 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    () => JSON.parse(localStorage.getItem('isLoggedIn')) || false
+  );
 
+  useEffect(() => {
+    localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
+  }, [isLoggedIn]);
 
-const [loggedIn, setLoggedIn] = useState("Login")
+  const handleLogin = (e) => {
+    e.preventDefault(); // 
+    if (isLoggedIn) {
+      // Log out
+      setIsLoggedIn(false);
+      window.location.href = '/signin';
+    } else {
+      // Log in
+      setIsLoggedIn(true);
+      window.location.href = '/profile';
+    }
+  };
 
-useEffect(() => {
-  if(!loggedIn){
-    setLoggedIn("Sign In")
-  }
-},[loggedIn])
-
-const handleLogin = () => {
-  setLoggedIn(loggedIn === "Login" ? "Logout" : "Login")
-
-}
-
+  const loggedIn = isLoggedIn ? 'Logout' : 'Login';
 
   return (
     <div className='relative flex h-7'>
-    <div>
-    <a href='/SignIn' onClick={handleLogin} className='text-white'>{loggedIn}</a>
-
+      <div>
+        <a
+          href={isLoggedIn ? '/signin' : '/profile'}
+          onClick={handleLogin}
+          className='text-white'
+        >
+          {loggedIn}
+        </a>
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
