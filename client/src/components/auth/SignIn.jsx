@@ -7,7 +7,6 @@ const SignIn = () => {
       <input type="text" name='signin' className='text-black'/>
       <input type="password" name='password' className='text-black'/>
       <button className='text-black' type="submit">Login</button>
-      
       </form>
     </div>
   )
